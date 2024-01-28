@@ -1,5 +1,5 @@
 module ActiveModel
-  module InheritedPartials
-    VERSION = "0.1.0"
-  end
+	module InheritedPartials
+		VERSION = '0.1.1'
+	end
 end
