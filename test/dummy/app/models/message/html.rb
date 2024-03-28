@@ -1,4 +1,4 @@
 class Message
-	class HTML < Text
+	class HTML < Text::Rich
 	end
 end

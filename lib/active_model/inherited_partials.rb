@@ -33,6 +33,7 @@ module ActiveModel
 				name
 						.deconstantize
 						.split('::')
+						.each.with_object([]) { |name, namespaces| namespaces << "#{namespaces.last}::#{name}" }
 						.map(&:constantize)
 						.select { _1.in? ancestors }
 			end
