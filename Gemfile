@@ -5,3 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
 gem "sqlite3"
+
+group :test do
+	gem 'simplecov', require: false
+end
