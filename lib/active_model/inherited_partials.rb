@@ -20,13 +20,13 @@ module ActiveModel
 
 			def namespaced_partial_path
 				namespace_model
-						&.then { _1.partial_dir / model_name.element / _1.partial_name }
+						&.then { it.partial_dir / model_name.element / it.partial_name }
 						&.to_s
 			end
 
 			def namespace_model
 				namespace_classes
-						.reverse.find { _1.respond_to? :model_name }
+						.reverse.find { it.respond_to? :model_name }
 			end
 
 			def namespace_classes
@@ -35,7 +35,7 @@ module ActiveModel
 						.split('::')
 						.each.with_object([]) { |name, namespaces| namespaces << "#{namespaces.last}::#{name}" }
 						.map(&:constantize)
-						.select { _1.in? ancestors }
+						.intersection(ancestors)
 			end
 
 			def find_or_inherit path
